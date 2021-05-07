@@ -26,7 +26,8 @@
             ],
             "aliases": {
                 "GridPlayAPI": "GridPlayAPI\\GridPlayAPI",
-                "GridPay": "GridPlayAPI\\GridPay"
+                "GridPay": "GridPlayAPI\\GridPay",
+                "Ventalkie": "GridPlayAPI\\Ventalkie"
             }
 
         },

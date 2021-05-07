@@ -19,4 +19,6 @@ To use is easy, right now we just have support for GridPay
 ```php
 GridPay::transfer($user_uuid, $payto_uuid, $amount);
 GridPay::getBal($user_uuid);
+Ventalkie::sendmsg($chan, $nick, $msg);
+Ventalkie::getChannel($search);
 ```
