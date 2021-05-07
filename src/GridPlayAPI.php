@@ -20,29 +20,13 @@ class GridPlayAPI {
 	public static function senddata($data = []) {
 		$send = self::httpheaders($data);
 		$send['timeout'] = 3.14;
-		if (!empty($data['auth'])) {
-			$send['auth'] = $data['auth'];
-		}
-		if (!empty($data['body'])) {
-			$send['body'] = $data['body'];
-		}
-		if (!empty($data['query'])) {
-			$send['query'] = $data['query'];
-		}
 		if (!empty($data['json'])) {
 			$send['json'] = $data['json'];
-		}
-		if (!empty($data['form'])) {
-			$send['form_params'] = $data['form'];
-		}
-		if (!empty($data['form_params'])) {
-			$send['form_params'] = $data['form_params'];
 		}
 		if (isset($data['timeout'])) {
             $send['timeout'] = $data['timeout'];
         }
 		$client = new Client(); // Guzzle
-		$reply = "error";
 		try {
 			$response = $client->request($data['type'], self::$url.'/'.$data['url'], $send);
 			$body = $response->getBody();
@@ -57,20 +41,11 @@ class GridPlayAPI {
 	}
 	private static function httpheaders($data = []) {
 	    $h = [];
-	    $nh = [];
 		if (isset($data['heads'])) {
-			$nh = $data['heads'];
-		    $h = $nh;
+			$h = $data['heads'];
         }
-        /* application/x-www-form-urlencoded */
-		$h += ['verify' => false,
-		'content-type' => 'application/x-www-form-urlencoded'];
-		if (array_key_exists('json', $data)) {
-			$h['content-type'] = 'application/json';
-		}
-        if (isset($data['content-type'])) {
-            $h['content-type'] = $data['content-type'];
-        }
+		$h['verify'] = false;
+		$h['content-type'] = 'application/json';
 		return ['headers' => $h];
 	}
 }
