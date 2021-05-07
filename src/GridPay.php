@@ -10,4 +10,11 @@ class GridPay extends GridPlayAPI {
 		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
+	public static function transfer($uuid, $payto, $amount) {
+		$j = ['uuid' => $uuid, 'payto' => $payto];
+		$j['amount'] = $amount;
+		$a = ['type' => 'POST', 'url' => 'gridpay/getbal', 'json' => $j];
+		$api = GridPlayAPI::senddata($a);
+		return $api;
+	}
 }
