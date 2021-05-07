@@ -1,0 +1,40 @@
+{
+    "name": "chrisx84/gridplayapi",
+    "type": "library",
+    "description": "GridPlay API.",
+    "keywords": ["gridplay","api"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Strachan",
+            "email": "chrisx84@live.ca",
+            "homepage": "https://github.com/Chrisx84"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5|^8.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "autoload": {
+        "files": [],
+        "psr-4": {
+            "GridPlayAPI\\": "src/"
+        },
+        "classmap": []
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
