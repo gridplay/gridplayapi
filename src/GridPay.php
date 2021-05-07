@@ -10,7 +10,7 @@ class GridPay {
 		//
 	}
 	public function getBal($uuid) {
-		$a = ['type' => 'GET', 'url' => 'gridpay/getbal?uuid='.$uuid];
+		$a = ['type' => 'GET', 'url' => 'gridpay/getbal?uuid='.$uuid, 'body' => ''];
 		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
