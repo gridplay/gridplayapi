@@ -8,7 +8,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\stream_for;
 use GuzzleHttp\Stream\Stream;
 class GridPlayAPI {
-    public $url = "https://api.gridplay.net/";
+    public static $url = "https://api.gridplay.net/";
 
 	public function __construct() {
 		//
