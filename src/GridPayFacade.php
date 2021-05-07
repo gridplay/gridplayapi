@@ -8,4 +8,5 @@ class GridPayFacade extends Facade {
     protected static function getFacadeAccessor() {
         return 'gridpay';
     }
+    public function getBal($uuid);
 }
