@@ -23,7 +23,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [],
+            "providers": [
+                "GridPlayAPI\\GridPlayProvider"
+            ],
             "aliases": {
                 "GridPlayAPI": "GridPlayAPI\\GridPlayAPIFacade",
                 "GridPay": "GridPlayAPI\\GridPayFacade"
