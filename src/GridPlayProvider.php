@@ -23,13 +23,9 @@ class GridPlayProvider extends ServiceProvider implements DeferrableProvider
      */
     public function register()
     {
-        $this->registerHtmlBuilder();
-
-        $this->registerFormBuilder();
+        $this->registerGridPay();
 
         $this->app->alias('gridpay', GridPay::class);
-
-        $this->registerBladeDirectives();
     }
 
     /**
