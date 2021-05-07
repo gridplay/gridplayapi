@@ -1,12 +1,7 @@
 <?php
 namespace GridPlayAPI;
-use Illuminate\Support\Traits\Macroable;
-use Illuminate\Support\Collection;
-class GridPay {
-	use Macroable, Componentable {
-        Macroable::__call as macroCall;
-        Componentable::__call as componentCall;
-    }
+use GridPlayAPI;
+class GridPay extends GridPlayAPI {
 	public function __construct() {
 		//
 	}
@@ -15,15 +10,4 @@ class GridPay {
 		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
-	public function __call($method, $parameters) {
-        if (static::hasComponent($method)) {
-            return $this->componentCall($method, $parameters);
-        }
-
-        if (static::hasMacro($method)) {
-            return $this->macroCall($method, $parameters);
-        }
-
-        throw new BadMethodCallException("Method {$method} does not exist.");
-    }
 }

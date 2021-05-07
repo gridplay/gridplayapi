@@ -24,11 +24,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "GridPlayAPI\\GridPlayProvider"
             ],
             "aliases": {
-                "GridPlayAPI": "GridPlayAPI\\GridPlayAPIFacade",
-                "GridPay": "GridPlayAPI\\GridPayFacade"
+                "GridPlayAPI": "GridPlayAPI\\GridPlayAPI",
+                "GridPay": "GridPlayAPI\\GridPay"
             }
 
         },

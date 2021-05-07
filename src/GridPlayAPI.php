@@ -1,7 +1,5 @@
 <?php
 namespace GridPlayAPI;
-use Illuminate\Support\Traits\Macroable;
-use Illuminate\Support\Collection;
 use GuzzleHttp\Client;
 use Guzzle\Http\EntityBody;
 use GuzzleHttp\RequestOptions;
@@ -10,10 +8,6 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\stream_for;
 use GuzzleHttp\Stream\Stream;
 class GridPlayAPI {
-	use Macroable, Componentable {
-        Macroable::__call as macroCall;
-        Componentable::__call as componentCall;
-    }
     public $url = "https://api.gridplay.net/";
 
 	public function __construct() {
@@ -23,7 +17,7 @@ class GridPlayAPI {
 	* Send any data to a in world prim
 	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'body' => 'otherdata'])
 	*/
-	public function senddata($data = []) {
+	public static function senddata($data = []) {
 		$send = $this->httpheaders($data);
 		$send['timeout'] = 3.14;
 		if (!empty($data['auth'])) {
@@ -50,7 +44,7 @@ class GridPlayAPI {
 		$client = new Client(); // Guzzle
 		$reply = "error";
 		try {
-			$response = $client->request($data['type'], $this->$url.'/'.$data['url'], $send);
+			$response = $client->request($data['type'], self::$url.'/'.$data['url'], $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
 				$bod = $body->getContents();
@@ -65,7 +59,7 @@ class GridPlayAPI {
 		}
 		return false;
 	}
-	private function httpheaders($data = []) {
+	private static function httpheaders($data = []) {
 	    $h = [];
 	    $nh = [];
 		if (isset($data['heads'])) {
@@ -83,16 +77,4 @@ class GridPlayAPI {
         }
 		return ['headers' => $h];
 	}
-	public function __call($method, $parameters) {
-        if (static::hasComponent($method)) {
-            return $this->componentCall($method, $parameters);
-        }
-
-        if (static::hasMacro($method)) {
-            return $this->macroCall($method, $parameters);
-        }
-
-        throw new BadMethodCallException("Method {$method} does not exist.");
-    }
-
 }
