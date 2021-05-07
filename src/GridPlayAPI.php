@@ -18,7 +18,7 @@ class GridPlayAPI {
 	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'body' => 'otherdata'])
 	*/
 	public static function senddata($data = []) {
-		$send = $this->httpheaders($data);
+		$send = self::httpheaders($data);
 		$send['timeout'] = 3.14;
 		if (!empty($data['auth'])) {
 			$send['auth'] = $data['auth'];
