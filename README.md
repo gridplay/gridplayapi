@@ -14,7 +14,7 @@ Made for Laravel 6+, if not using laravel or a version below 6 just add the alia
 "GridPay" => "GridPlayAPI\\GridPay"
 ```
 
-To use is easy, right now we just have support for GridPay
+To use is easy
 
 ```php
 GridPay::transfer($user_uuid, $payto_uuid, $amount);
