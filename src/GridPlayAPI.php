@@ -48,11 +48,7 @@ class GridPlayAPI {
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
 				$bod = $body->getContents();
-				if ($response->getHeaderLine('Content-Type') == "application/json" || isJson($bod)) {
-					return json_decode($bod, true);
-				}else{
-					return $bod;
-				}
+				return json_decode($bod, true);
 			}
 		}catch(RequestException $e) {
 			return false;
