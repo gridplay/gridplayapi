@@ -8,6 +8,11 @@ To use first install with composer
 ```
 composer require chrisx84/gridplayapi
 ```
+Made for Laravel 6+, if not using laravel or a version below 6 just add the alias
+```
+"GridPlayAPI" => "GridPlayAPI\\GridPlayAPI",
+"GridPay" => "GridPlayAPI\\GridPay"
+```
 
 To use is easy, right now we just have support for GridPay
 
