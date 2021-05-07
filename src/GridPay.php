@@ -1,9 +1,7 @@
 <?php
 namespace GridPlayAPI;
-class GridPay {
-	public function __construct() {
-		//
-	}
+use GridPlayAPI;
+class GridPay extends GridPlayAPI {
 	public static function getBal($uuid) {
 		$a = ['type' => 'GET', 'url' => 'gridpay/getbal?uuid='.$uuid, 'body' => ''];
 		$api = GridPlayAPI::senddata($a);
