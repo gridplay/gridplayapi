@@ -9,13 +9,9 @@ use GuzzleHttp\Psr7\stream_for;
 use GuzzleHttp\Stream\Stream;
 class GridPlayAPI {
     public static $url = "https://api.gridplay.net/";
-
-	public function __construct() {
-		//
-	}
 	/*
 	* Send any data to a in world prim
-	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'body' => 'otherdata'])
+	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'json' => 'otherdata'])
 	*/
 	public static function senddata($data = []) {
 		$send = self::httpheaders($data);
@@ -23,12 +19,10 @@ class GridPlayAPI {
 		if (!empty($data['json'])) {
 			$send['json'] = $data['json'];
 		}
-		if (isset($data['timeout'])) {
-            $send['timeout'] = $data['timeout'];
-        }
 		$client = new Client(); // Guzzle
 		try {
-			$response = $client->request($data['type'], self::$url.'/'.$data['url'], $send);
+			$response = $client->request($data['type'],
+			self::$url.'/'.$data['url'], $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
 				$bod = $body->getContents();
