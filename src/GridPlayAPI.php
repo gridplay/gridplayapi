@@ -40,6 +40,7 @@ class GridPlayAPI {
         }
 		$h['verify'] = false;
 		$h['content-type'] = 'application/json';
+		$h['GPN_KEY'] = config('gridplay.api_key');
 		return ['headers' => $h];
 	}
 }
