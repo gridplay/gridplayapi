@@ -20,7 +20,6 @@ class GridPlayAPI {
 		if (!empty($data['json'])) {
 			$send['json'] = $data['json'];
 		}
-		$send['GPN_KEY'] = config('gridplay.api_key');
 		$client = new Client(); // Guzzle
 		try {
 			$response = $client->request($data['type'],
@@ -40,6 +39,7 @@ class GridPlayAPI {
 		if (array_key_exists('heads',$data)) {
 			$h = $data['heads'];
         }
+		$h['GPN_KEY'] = config('gridplay.api_key');
 		$h['verify'] = "false";
 		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
