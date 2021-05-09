@@ -20,7 +20,6 @@ class GridPlayAPI {
 		if (!empty($data['json'])) {
 	    	$data['json'] = ['GPN_KEY' => config('gridplay.api_key')];
 			$send['json'] = $data['json'];
-			Log::debug($data['json']);
 		}
 		$client = new Client(); // Guzzle
 		try {
