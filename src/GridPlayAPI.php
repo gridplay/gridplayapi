@@ -39,8 +39,8 @@ class GridPlayAPI {
 		if (array_key_exists('heads',$data)) {
 			$h = $data['heads'];
         }
-		$h['GPN_KEY'] = config('gridplay.api_key');
 		$h['verify'] = "false";
+		$h['gpn_key'] = config('gridplay.api_key');
 		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
 		return $h;
