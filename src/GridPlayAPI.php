@@ -15,12 +15,12 @@ class GridPlayAPI {
 	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'json' => 'otherdata'])
 	*/
 	public static function senddata($data = []) {
-		$send = ['headers' => self::httpheaders($data)];
-		$send['timeout'] = 3.14;
+		$h = self::httpheaders($data);
+		$send = ['timeout' => 3.14];
 		if (!empty($data['json'])) {
 			$send['json'] = $data['json'];
 		}
-		$client = new Client(); // Guzzle
+		$client = new Client($h); // Guzzle
 		try {
 			$response = $client->request($data['type'],
 			self::$url.'/'.$data['url'], $send);
@@ -43,6 +43,6 @@ class GridPlayAPI {
 		$h['gpn_key'] = config('gridplay.api_key');
 		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
-		return $h;
+		return ['headers' => $h];
 	}
 }
