@@ -7,6 +7,7 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\stream_for;
 use GuzzleHttp\Stream\Stream;
+use Log;
 class GridPlayAPI {
     public static $url = "https://api.gridplay.net/";
 	/*
@@ -19,8 +20,9 @@ class GridPlayAPI {
 		if (!empty($data['json'])) {
 			$send['json'] = $data['json'];
 		}
-		$client = new Client(); // Guzzle
+		$client = new Client(["headers" => $send['headers']]); // Guzzle
 		try {
+			Log::debug($send);
 			$response = $client->request($data['type'],
 			self::$url.'/'.$data['url'], $send);
 			$body = $response->getBody();
@@ -34,11 +36,13 @@ class GridPlayAPI {
 		return false;
 	}
 	private static function httpheaders($data = []) {
-	    $h = ['GPN_KEY' => config('gridplay.api_key')];
+		$h = [];
 		if (isset($data['heads'])) {
 			$h = $data['heads'];
         }
-		$h['verify'] = false;
+	    $h['GPN_KEY'] = config('gridplay.api_key');
+		$h['verify'] = "false";
+		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
 		return $h;
 	}
