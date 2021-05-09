@@ -18,9 +18,9 @@ class GridPlayAPI {
 		$send = ['headers' => self::httpheaders($data)];
 		$send['timeout'] = 3.14;
 		if (!empty($data['json'])) {
-	    	$data['json'] = ['GPN_KEY' => config('gridplay.api_key')];
 			$send['json'] = $data['json'];
 		}
+		$send['GPN_KEY'] = config('gridplay.api_key');
 		$client = new Client(); // Guzzle
 		try {
 			$response = $client->request($data['type'],
