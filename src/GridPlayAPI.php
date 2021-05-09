@@ -14,7 +14,7 @@ class GridPlayAPI {
 	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'json' => 'otherdata'])
 	*/
 	public static function senddata($data = []) {
-		$send = self::httpheaders($data);
+		$send = ['headers' => self::httpheaders($data)];
 		$send['timeout'] = 3.14;
 		if (!empty($data['json'])) {
 			$send['json'] = $data['json'];
@@ -41,6 +41,6 @@ class GridPlayAPI {
 		$h['verify'] = false;
 		$h['content-type'] = 'application/json';
 		$h['GPN_KEY'] = config('gridplay.api_key');
-		return ['headers' => $h];
+		return $h;
 	}
 }
