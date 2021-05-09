@@ -18,11 +18,12 @@ class GridPlayAPI {
 		$send = ['headers' => self::httpheaders($data)];
 		$send['timeout'] = 3.14;
 		if (!empty($data['json'])) {
+	    	$data['json'] = ['GPN_KEY' => config('gridplay.api_key')];
 			$send['json'] = $data['json'];
+			Log::debug($data['json']);
 		}
-		$client = new Client(["headers" => $send['headers']]); // Guzzle
+		$client = new Client(); // Guzzle
 		try {
-			Log::debug($send);
 			$response = $client->request($data['type'],
 			self::$url.'/'.$data['url'], $send);
 			$body = $response->getBody();
@@ -37,10 +38,9 @@ class GridPlayAPI {
 	}
 	private static function httpheaders($data = []) {
 		$h = [];
-		if (isset($data['heads'])) {
+		if (array_key_exists('heads',$data)) {
 			$h = $data['heads'];
         }
-	    $h['GPN_KEY'] = config('gridplay.api_key');
 		$h['verify'] = "false";
 		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
