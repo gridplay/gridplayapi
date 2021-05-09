@@ -14,6 +14,7 @@ class Ventalkie extends GridPlayAPI {
 		$j = ['chan' => $chan];
 		$j['nick'] = $nick;
 		$j['msg'] = $msg;
+		$j['gpn_key'] = config('gridplay.api_key');
 		$a = ['type' => 'POST', 'url' => 'radio/send', 'json' => $j];
 		$api = parent::senddata($a);
 		return $api;
