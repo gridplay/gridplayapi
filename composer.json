@@ -31,7 +31,8 @@
                 "GridPay": "GridPlayAPI\\GridPay",
                 "Ventalkie": "GridPlayAPI\\Ventalkie",
                 "Groups": "GridPlayAPI\\Groups",
-                "GridHaul": "GridPlayAPI\\GridHaul"
+                "GridHaul": "GridPlayAPI\\GridHaul",
+                "GridPhone": "GridPlayAPI\\GridPhone"
             }
 
         },
