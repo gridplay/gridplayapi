@@ -6,7 +6,7 @@ GridPlay.net is a Second Life company.
 
 To use first install with composer
 ```
-composer require chrisx84/gridplayapi
+composer require gridplay/gridplayapi
 ```
 For config just do
 ```
