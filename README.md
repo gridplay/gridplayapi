@@ -19,6 +19,8 @@ Made for Laravel 6+.
 To use is easy
 
 ```php
+GridPlay::Name2Key($user_uuid);
+GridPlay::Key2Name($user_name);
 GridPay::transfer($sl_uuid, $payto_uuid, $amount);
 GridPay::getBal($sl_uuid);
 Ventalkie::sendmsg($chan, $nick, $msg);
