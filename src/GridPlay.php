@@ -12,4 +12,9 @@ class GridPlay extends GridPlayAPI {
 		$api = parent::senddata($a);
 		return $api['name'];
 	}
+	public static function Wmps() {
+		$a = ['type' => 'GET', 'url' => 'wmps'];
+		$api = parent::senddata($a);
+		return $api;
+	}
 }
