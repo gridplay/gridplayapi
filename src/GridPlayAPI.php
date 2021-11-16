@@ -7,11 +7,9 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\stream_for;
 use GuzzleHttp\Stream\Stream;
-use Log;
 class GridPlayAPI {
     public static $url = "https://api.gridplay.net/";
 	/*
-	* Send any data to a in world prim
 	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'json' => 'otherdata'])
 	*/
 	public static function senddata($data = []) {
@@ -26,13 +24,22 @@ class GridPlayAPI {
 			self::$url.'/'.$data['url'], $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
-				$bod = $body->getContents();
-				return json_decode($bod, true);
+				return json_decode($body->getContents(), true);
 			}
 		}catch(RequestException $e) {
 			return false;
 		}
 		return false;
+	}
+	// GridPlayAPI::curlme($method, $url, $data)
+	public static function curlme($meth = 'GET', $url = '', $data = []) {
+		$a = [];
+		if ($data != []) {
+			$a['json'] = $data;
+		}
+		$a['type'] = $meth;
+		$a['url'] = $url;
+		return self::senddata($a);
 	}
 	private static function httpheaders($data = []) {
 		$h = [];
