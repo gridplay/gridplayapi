@@ -3,8 +3,8 @@ namespace GridPlayAPI;
 use GridPlayAPI;
 class GridPay extends GridPlayAPI {
 	public static function getBal($uuid) {
-		$a = ['type' => 'GET','url' => 'gridpay/getbal?uuid='.$uuid];
-		$api = parent::senddata($a);
+		$a = 'gridpay/getbal?uuid='.$uuid;
+		$api = parent::curlme('GET', $a, []);
 		return $api;
 	}
 	public static function transfer($uuid, $payto, $amount) {
