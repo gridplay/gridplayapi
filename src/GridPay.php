@@ -4,7 +4,7 @@ use GridPlayAPI;
 class GridPay extends GridPlayAPI {
 	public static function getBal($uuid) {
 		$a = 'gridpay/getbal?uuid='.$uuid;
-		$api = parent::curlme('GET', $a, []);
+		$api = GridPlayAPI::curlme('GET', $a, []);
 		return $api;
 	}
 	public static function transfer($uuid, $payto, $amount) {
@@ -12,7 +12,7 @@ class GridPay extends GridPlayAPI {
 		$j['amount'] = str_replace(",","",$amount);
 		$j['gpn_key'] = config('gridplay.api_key');
 		$a = ['type' => 'POST','url' => 'gridpay/xfer', 'json' => $j];
-		$api = parent::senddata($a);
+		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
 }

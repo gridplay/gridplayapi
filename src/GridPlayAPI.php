@@ -19,11 +19,10 @@ class GridPlayAPI {
 		}
 		$send['verify'] = true;
 		$client = new Client(self::httpheaders($data)); // Guzzle
-		$url = self::$url.'/'.$data['url'];
+		$url = 'https://api.gridplay.net/'.$data['url'];
 		try {
 			$response = $client->request($data['type'], $url, $send);
 			$body = $response->getBody();
-			Log::debug($body->getContents());
 			if ($response->getStatusCode() == 200) {
 				return json_decode($body->getContents(), true);
 			}
@@ -45,7 +44,7 @@ class GridPlayAPI {
 	private static function httpheaders($data = []) {
 		$h = [];
 		if (array_key_exists('heads',$data)) {
-			$h = $data['heads'];
+			$h += $data['heads'];
         }
 		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
