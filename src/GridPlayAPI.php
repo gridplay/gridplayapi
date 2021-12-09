@@ -26,7 +26,7 @@ class GridPlayAPI {
 			if ($response->getStatusCode() == 200) {
 				return json_decode($body->getContents(), true);
 			}
-		}catch(RequestException $e) {
+		}catch(\Exception $e) {
 			return false;
 		}
 		return false;
