@@ -4,17 +4,22 @@ use GridPlayAPI;
 class GridPlay extends GridPlayAPI {
 	public static function Name2Key($uuid = "") {
 		$a = ['type' => 'GET', 'url' => 'name2key/'.$uuid];
-		$api = parent::senddata($a);
+		$api = GridPlayAPI::senddata($a);
 		return $api['uuid'];
 	}
 	public static function Key2Name($name = "") {
 		$a = ['type' => 'GET', 'url' => 'key2name/'.$name];
-		$api = parent::senddata($a);
+		$api = GridPlayAPI::senddata($a);
 		return $api['name'];
 	}
 	public static function Wmps() {
 		$a = ['type' => 'GET', 'url' => 'wmps'];
-		$api = parent::senddata($a);
+		$api = GridPlayAPI::senddata($a);
+		return $api;
+	}
+	public static function getImg($uuid) {
+		$a = ['type' => 'GET', 'url' => 'slimg/'.$uuid];
+		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
 }

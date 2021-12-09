@@ -7,7 +7,7 @@ class Ventalkie extends GridPlayAPI {
 		if (!empty($search)) {
 			$a['url'] = 'radio/'.$search;
 		}
-		$api = parent::senddata($a);
+		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
 	public static function sendmsg($chan, $nick, $msg) {
@@ -16,7 +16,7 @@ class Ventalkie extends GridPlayAPI {
 		$j['msg'] = $msg;
 		$j['gpn_key'] = config('gridplay.api_key');
 		$a = ['type' => 'POST', 'url' => 'radio/send', 'json' => $j];
-		$api = parent::senddata($a);
+		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
 }

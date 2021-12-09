@@ -7,7 +7,7 @@ class GridHaul extends GridPlayAPI {
 		if (!empty($search)) {
 			$a['url'] = 'gridhaul/'.$search;
 		}
-		$api = parent::senddata($a);
+		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
 }

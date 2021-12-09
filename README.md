@@ -22,10 +22,12 @@ To use is easy
 GridPlay::Name2Key($user_uuid);
 GridPlay::Key2Name($user_name);
 GridPlay::Wmps();
+GridPlay::getImg($texture_uuid);
 GridPay::transfer($sl_uuid, $payto_uuid, $amount);
 GridPay::getBal($sl_uuid);
 Ventalkie::sendmsg($chan, $nick, $msg);
 Ventalkie::getChannel($search);
 Groups::getGroup($group_uuid);
 GridHaul::getHub($search);
+GridAds::getAd();
 ```
