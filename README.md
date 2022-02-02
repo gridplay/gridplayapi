@@ -29,5 +29,4 @@ Ventalkie::sendmsg($chan, $nick, $msg);
 Ventalkie::getChannel($search);
 Groups::getGroup($group_uuid);
 GridHaul::getHub($search);
-GridAds::getAd();
 ```
