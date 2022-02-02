@@ -11,8 +11,9 @@ class GridPay extends GridPlayAPI {
 		$j = ['uuid' => $uuid, 'payto' => $payto];
 		$j['amount'] = str_replace(",","",$amount);
 		$j['gpn_key'] = config('gridplay.api_key');
-		//$a = ['json' => $j];
-		$api = GridPlayAPI::curlme('PUT', 'gridpay/xfer', $j);
+		$api = GridPlayAPI::curlme('POST', 'gridpay/xfer', $j);
+		/*$a = ['type' => 'POST', 'url' => 'gridpay/xfer', 'json' => $j];
+		$api = GridPlayAPI::senddata($a);*/
 		return $api;
 	}
 }

@@ -33,8 +33,7 @@
                 "Ventalkie": "GridPlayAPI\\Ventalkie",
                 "Groups": "GridPlayAPI\\Groups",
                 "GridHaul": "GridPlayAPI\\GridHaul",
-                "GridPhone": "GridPlayAPI\\GridPhone",
-                "GridAds": "GridPlayAPI\\GridAds"
+                "GridPhone": "GridPlayAPI\\GridPhone"
             }
 
         },
