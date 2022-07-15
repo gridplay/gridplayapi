@@ -22,4 +22,12 @@ class GridPlay extends GridPlayAPI {
 		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
+	public static function sendIM($towho, $msg) {
+		$j = ["to" => $towho];
+		$j["msg"] = $msg;
+		$j['gpn_key'] = config('gridplay.api_key');
+		$a = ['type' => 'POST', 'url' => 'instantmessage', 'json' => $j];
+		$api = GridPlayAPI::senddata($a);
+		return $api;
+	}
 }
