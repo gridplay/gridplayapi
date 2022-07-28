@@ -22,6 +22,11 @@ class GridPlay extends GridPlayAPI {
 		$api = GridPlayAPI::senddata($a);
 		return $api;
 	}
+	public static function getProfPic($uuid) {
+		$a = ['type' => 'GET', 'url' => 'profilepic/'.$uuid];
+		$api = GridPlayAPI::senddata($a);
+		return $api;
+	}
 	public static function sendIM($towho, $msg) {
 		$j = ["to" => $towho];
 		$j["msg"] = $msg;
