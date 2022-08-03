@@ -5,7 +5,11 @@ class GridPay extends GridPlayAPI {
 	public static function getBal($uuid) {
 		$a = 'gridpay/getbal?uuid='.$uuid;
 		$api = GridPlayAPI::curlme('GET', $a, []);
-		return $api;
+		if (!is_null($api)) {
+			return $api;
+		}else{
+			return ['balstr' => 0, 'bal' => 0];
+		}
 	}
 	public static function transfer($uuid, $payto, $amount) {
 		$j = ['uuid' => $uuid, 'payto' => $payto];
