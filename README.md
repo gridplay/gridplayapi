@@ -24,10 +24,10 @@ GridPlay::Key2Name($user_name);
 GridPlay::Wmps();
 GridPlay::getImg($texture_uuid);
 GridPlay::getProfPic($user_uuid);
+GridPlay::sendIM($towho, $msg);
 GridPay::transfer($sl_uuid, $payto_uuid, $amount);
 GridPay::getBal($sl_uuid);
 Ventalkie::sendmsg($chan, $nick, $msg);
 Ventalkie::getChannel($search);
-Groups::getGroup($group_uuid);
 GridHaul::getHub($search);
 ```
