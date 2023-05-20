@@ -5,12 +5,18 @@ class GridPlay extends GridPlayAPI {
 	public static function Name2Key($uuid = "") {
 		$a = ['type' => 'GET', 'url' => 'name2key/'.$uuid];
 		$api = GridPlayAPI::senddata($a);
-		return $api['uuid'];
+		if (array_key_exists('uuid', $api)) {
+			return $api['uuid'];
+		}
+		return null;
 	}
 	public static function Key2Name($name = "") {
 		$a = ['type' => 'GET', 'url' => 'key2name/'.$name];
 		$api = GridPlayAPI::senddata($a);
-		return $api['name'];
+		if (array_key_exists('name', $api)) {
+			return $api['name'];
+		}
+		return null;
 	}
 	public static function Wmps() {
 		$a = ['type' => 'GET', 'url' => 'wmps'];
