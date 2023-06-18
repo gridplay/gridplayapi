@@ -13,7 +13,7 @@ class GridPlay extends GridPlayAPI {
 	public static function Key2Name($name = "") {
 		$a = ['type' => 'GET', 'url' => 'key2name/'.$name];
 		$api = GridPlayAPI::senddata($a);
-		if (array_key_exists('name', $api)) {
+		if (is_array($api) && array_key_exists('name', $api)) {
 			return $api['name'];
 		}
 		return null;
