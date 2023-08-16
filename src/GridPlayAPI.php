@@ -18,7 +18,7 @@ class GridPlayAPI {
 		}
 		$send['verify'] = true;
 		$client = new Client(self::httpheaders($data)); // Guzzle
-		$url = 'https://api.gridplay.net/'.$data['url'];
+		$url = 'https://sl.gridplay.net/api/'.$data['url'];
 		try {
 			$response = $client->request($data['type'], $url, $send);
 			$body = $response->getBody();
