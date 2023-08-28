@@ -1,7 +1,7 @@
 {
     "name": "gridplay/gridplayapi",
     "type": "library",
-    "description": "GridPlay API.",
+    "description": "GridPlay API",
     "keywords": ["gridplay","api"],
     "license": "MIT",
     "authors": [

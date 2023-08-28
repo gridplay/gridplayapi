@@ -2,9 +2,9 @@
 namespace GridPlayAPI;
 use GridPlayAPI;
 class GridPay extends GridPlayAPI {
-	public static function getBal($uuid) {
-		$a = 'gridpay/getbal?uuid='.$uuid;
-		$api = GridPlayAPI::curlme('GET', $a, []);
+	public static function getBal() {
+		$a = 'gridpay/getbal';
+		$api = GridPlayAPI::senddata('GET', $a, []);
 		if (!is_null($api)) {
 			return $api;
 		}else{
@@ -12,10 +12,12 @@ class GridPay extends GridPlayAPI {
 		}
 	}
 	public static function transfer($uuid, $payto, $amount) {
-		$j = ['uuid' => $uuid, 'payto' => $payto];
-		$j['amount'] = str_replace(",","",$amount);
-		$j['gpn_key'] = config('gridplay.api_key');
-		$api = GridPlayAPI::curlme('POST', 'gridpay/xfer', $j);
-		return $api;
+		if ($amount > 0) {
+			$j = ['payto' => $payto];
+			$j['amount'] = str_replace(",","",$amount);
+			$api = GridPlayAPI::senddata('POST', 'gridpay/xferto', $j);
+			return $api;
+		}
+		return ['error' => 'amount MUST be a number'];
 	}
 }
