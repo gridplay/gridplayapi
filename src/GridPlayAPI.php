@@ -8,45 +8,42 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\stream_for;
 use GuzzleHttp\Stream\Stream;
 class GridPlayAPI {
+	public static $nullkey = "00000000-0000-0000-0000-000000000000";
 	/*
-	* GridPlayAPI::senddata(['type' => 'GET', 'url' => 'url', 'json' => 'otherdata'])
+	* GridPlayAPI::senddata($meth, $uri, $data = [])
 	*/
-	public static function senddata($data = []) {
+	public static function senddata($meth, $uri, $data = []) {
 		$send = ['timeout' => 3.14];
-		if (!empty($data['json'])) {
-			$send['json'] = $data['json'];
+		if ($data != []) {
+			$send['json'] = $data;
 		}
 		$send['verify'] = true;
-		$client = new Client(self::httpheaders($data)); // Guzzle
-		$url = 'https://sl.gridplay.net/api/'.$data['url'];
+		$client = new Client(self::httpheaders()); // Guzzle
+		$url = 'https://sl.gridplay.net/api/'.$uri;
 		try {
-			$response = $client->request($data['type'], $url, $send);
+			$response = $client->request($meth, $url, $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
-				return json_decode($body->getContents(), true);
+				if (self::isJson($body->getContents())) {
+					return json_decode($body->getContents(), true);
+				}
 			}
 		}catch(\Exception $e) {
-			return false;
+			return ['ERROR' => 'Connection invalid'];
 		}
-		return false;
+		return ["ERROR" => 'Unable to connect'];
 	}
-	// GridPlayAPI::curlme($method, $url, $data)
-	public static function curlme($meth = 'GET', $url = '', $data = []) {
-		$a = [];
-		if ($data != []) {
-			$a['json'] = $data;
-		}
-		$a['type'] = $meth;
-		$a['url'] = $url;
-		return self::senddata($a);
-	}
-	private static function httpheaders($data = []) {
+	private static function httpheaders() {
 		$h = [];
-		if (array_key_exists('heads',$data)) {
-			$h += $data['heads'];
-        }
+        $resident = str_replace(" ", ".", config('gridplay.api_key'));
+        $h['GPAUTH'] = base64_encode($resident.":".time());
 		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
 		return ['headers' => $h];
+	}
+	public static function isJson($string) {
+    	return ((is_string($string) &&
+            (is_object(json_decode($string)) ||
+            is_array(json_decode($string))))) ? true : false;
 	}
 }

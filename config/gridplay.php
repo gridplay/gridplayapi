@@ -1,6 +1,8 @@
 <?php
 return [
-	// get this from https://gridplay.net/acc/settings
-	// mostly for POST method data
+	// This is your secondlife username
+	// Login name
+	// MUST BE A VALID RESIDENT NAME.
+	// dots will work. ie. john.snow
 	'api_key' => '',
 ];
