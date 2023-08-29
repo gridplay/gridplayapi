@@ -21,12 +21,10 @@ class GridPlayAPI {
 		$send['verify'] = true;
 		$client = new Client(self::httpheaders()); // Guzzle
 		$url = 'https://sl.gridplay.net/api/'.$uri;
-		Log::info($url);
 		try {
 			$response = $client->request($meth, $url, $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
-				Log::info($body->getContents());
 				if (self::isJson($body->getContents())) {
 					return json_decode($body->getContents(), true);
 				}
