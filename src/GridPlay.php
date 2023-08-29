@@ -20,7 +20,11 @@ class GridPlay extends GridPlayAPI {
 		return GridPlayAPI::senddata('GET','wmps',[]);
 	}
 	public static function getSimCoords($sim) {
-		return GridPlayAPI::senddata('GET','coords?sim='.urlencode($sim),[]);
+		$api = GridPlayAPI::senddata('GET','coords?sim='.urlencode($sim),[]);
+		if (!is_null($api)) {
+			return $api;
+		}
+		return [];
 	}
 	public static function getImg($uuid) {
 		return GridPlayAPI::senddata('GET','slimg/'.$uuid,[]);
