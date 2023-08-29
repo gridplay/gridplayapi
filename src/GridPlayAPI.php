@@ -21,12 +21,13 @@ class GridPlayAPI {
 		$send['verify'] = true;
 		$client = new Client(self::httpheaders()); // Guzzle
 		$url = 'https://sl.gridplay.net/api/'.$uri;
+		Log::info($url);
 		try {
 			$response = $client->request($meth, $url, $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
+				Log::info($body->getContents());
 				if (self::isJson($body->getContents())) {
-					Log::info($body->getContents());
 					return json_decode($body->getContents(), true);
 				}
 			}
@@ -39,7 +40,7 @@ class GridPlayAPI {
 		$h = [];
         $resident = str_replace(" ", ".", config('gridplay.api_key'));
         $h['GPAUTH'] = base64_encode($resident.":".time());
-		//$h['Accept'] = 'application/json';
+		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
 		return ['headers' => $h];
 	}
