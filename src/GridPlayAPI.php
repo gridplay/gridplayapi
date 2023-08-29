@@ -18,7 +18,6 @@ class GridPlayAPI {
 		if ($data != []) {
 			$send['json'] = $data;
 		}
-		//$send['verify'] = true;
 		$client = new Client(self::httpheaders()); // Guzzle
 		$url = 'https://sl.gridplay.net/api/'.$uri;
 		try {
