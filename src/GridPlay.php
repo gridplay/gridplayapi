@@ -1,7 +1,6 @@
 <?php
 namespace GridPlayAPI;
 use GridPlayAPI;
-use Log;
 class GridPlay extends GridPlayAPI {
 	public static function Name2Key($uuid = "") {
 		$api = GridPlayAPI::senddata('GET','name2key/'.$uuid,[]);
@@ -23,7 +22,6 @@ class GridPlay extends GridPlayAPI {
 	}
 	public static function getSimCoords($sim) {
 		$api = GridPlayAPI::senddata('GET','coords/'.$sim,[]);
-		Log::debug($api);
 		return $api['coords'];
 	}
 	public static function getImg($uuid) {
