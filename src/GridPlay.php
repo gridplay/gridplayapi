@@ -17,25 +17,18 @@ class GridPlay extends GridPlayAPI {
 		return "";
 	}
 	public static function Wmps() {
-		$api = GridPlayAPI::senddata('GET','wmps',[]);
-		return $api;
+		return GridPlayAPI::senddata('GET','wmps',[]);
 	}
 	public static function getSimCoords($sim) {
-		$api = GridPlayAPI::senddata('GET','coords/'.$sim,[]);
-		return $api['coords'];
+		return GridPlayAPI::senddata('GET','coords?sim='.urlencode($sim),[]);
 	}
 	public static function getImg($uuid) {
-		$api = GridPlayAPI::senddata('GET','slimg/'.$uuid,[]);
-		return $api;
+		return GridPlayAPI::senddata('GET','slimg/'.$uuid,[]);
 	}
 	public static function getProfPic($uuid) {
-		$api = GridPlayAPI::senddata('GET','profilepic/'.$uuid,[]);
-		return $api;
+		return GridPlayAPI::senddata('GET','profilepic/'.$uuid,[]);
 	}
 	public static function sendIM($towho, $msg) {
-		$j = ["to" => $towho];
-		$j["msg"] = $msg;
-		$api = GridPlayAPI::senddata('POST','instantmessage',$j);
-		return $api;
+		return GridPlayAPI::senddata('POST','instantmessage',["to" => $towho, "msg" => $msg]);
 	}
 }
