@@ -24,10 +24,8 @@ class GridPlayAPI {
 			$response = $client->request($meth, $url, $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
-				$bodyc = $body->getContents();
-				if (self::isJson($bodyc)) {
-					return json_decode($bodyc, true);
-				}
+				$bodcon = $body->getContents();
+				return json_decode($bodcon, true);
 			}
 		}catch(\Exception $e) {
 			return ['ERROR' => 'Connection invalid'];
@@ -38,7 +36,6 @@ class GridPlayAPI {
 		$h = [];
         $resident = str_replace(" ", ".", config('gridplay.api_key'));
         $h['GPAUTH'] = base64_encode($resident.":".time());
-		$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
 		return ['headers' => $h];
 	}
