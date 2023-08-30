@@ -36,7 +36,6 @@ class GridPlayAPI {
 		$h = [];
         $resident = str_replace(" ", ".", config('gridplay.api_key'));
         $h['GPAUTH'] = base64_encode($resident.":".time());
-		//$h['Accept'] = 'application/json';
 		$h['content-type'] = 'application/json';
 		return ['headers' => $h];
 	}
