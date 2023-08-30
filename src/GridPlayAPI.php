@@ -24,10 +24,8 @@ class GridPlayAPI {
 			$response = $client->request($meth, $url, $send);
 			$body = $response->getBody();
 			if ($response->getStatusCode() == 200) {
-				$bodyc = $body->getContents();
-				if (self::isJson($bodyc)) {
-					return json_decode($bodyc, true);
-				}
+				$bodcon = $body->getContents();
+				return json_decode($bodcon, true);
 			}
 		}catch(\Exception $e) {
 			return ['ERROR' => 'Connection invalid'];
