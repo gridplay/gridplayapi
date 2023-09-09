@@ -2,6 +2,7 @@
 namespace GridPlayAPI;
 use GridPlayAPI;
 class GridPlay extends GridPlayAPI {
+	public static $NULL_KEY = '00000000-0000-0000-0000-000000000000';
 	public static function Name2Key($uuid = "") {
 		$api = GridPlayAPI::senddata('POST','name2key/'.$uuid,[]);
 		if (is_array($api) && array_key_exists('uuid', $api)) {
