@@ -17,10 +17,6 @@ class GridPlay extends GridPlayAPI {
 		}
 		return "";
 	}
-	public static function GetSLAvatars($gpid = '') {
-		$api = GridPlayAPI::senddata('POST','slavatars/'.$gpid,[]);
-		return $api;
-	}
 	public static function Wmps() {
 		return GridPlayAPI::senddata('GET','wmps',[]);
 	}

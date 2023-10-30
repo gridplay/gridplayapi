@@ -25,7 +25,6 @@ GridPlay::Wmps(); // array
 GridPlay::getImg($texture_uuid); // array
 GridPlay::getProfPic($user_uuid); // array
 GridPlay::sendIM($towho, $msg); // array
-GridPlay::GetSLAvatars($gpid); // array
 GridPay::transfer($payto_uuid, $amount); // array
 GridPay::getBal(); // array
 Ventalkie::sendmsg($chan, $nick, $msg); // array
