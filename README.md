@@ -25,6 +25,8 @@ GridPlay::Wmps(); // array
 GridPlay::getImg($texture_uuid); // array
 GridPlay::getProfPic($user_uuid); // array
 GridPlay::sendIM($towho, $msg); // array
+// transfer function has been deprecated
+// due to security issues with it
 GridPay::transfer($payto_uuid, $amount); // array
 GridPay::getBal(); // array
 Ventalkie::sendmsg($chan, $nick, $msg); // array
