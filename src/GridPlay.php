@@ -36,4 +36,8 @@ class GridPlay extends GridPlayAPI {
 	public static function sendIM($towho, $msg) {
 		return GridPlayAPI::senddata('POST','instantmessage',["to" => $towho, "msg" => $msg]);
 	}
+	public static function isOnline($uuid) {
+		$isonline = GridPlayAPI::senddata('POST','useronline/'.$uuid,[]);
+		return $isonline['isOnline'];
+	}
 }
