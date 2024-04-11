@@ -3,11 +3,11 @@
 A API to use the GridPlay.net services for SecondLife residents.
 
 To use first install with composer
-```
+```sh
 composer require gridplay/gridplayapi
 ```
 For config just do
-```
+```sh
 php artisan vendor:publish --provider="GridPlayAPI\GPAPIServiceProvider"
 ```
 This will create a config file located in ```config/gridplay.php```
