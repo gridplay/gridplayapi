@@ -1,4 +1,4 @@
-# GridPlay API 2.0.8
+# GridPlay API 2.0.9
 
 A API to use the GridPlay.net services for SecondLife residents.
 
