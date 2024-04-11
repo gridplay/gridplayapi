@@ -38,6 +38,9 @@ class GridPlay extends GridPlayAPI {
 	}
 	public static function isOnline($uuid) {
 		$isonline = GridPlayAPI::senddata('POST','useronline/'.$uuid,[]);
-		return $isonline['isOnline'];
+		if ($isonline['isOnline'] == "true") {
+			return true;
+		}
+		return false;
 	}
 }
