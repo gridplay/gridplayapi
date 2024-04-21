@@ -1,8 +1,8 @@
 <?php
 namespace GridPlayAPI;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Str;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Http;
+use Illuminate\Support\Str;
+use Illuminate\Support\Log;
 class GridPlayAPI {
 	public static $nullkey = "00000000-0000-0000-0000-000000000000";
 	/*
