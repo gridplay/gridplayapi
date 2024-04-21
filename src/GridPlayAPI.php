@@ -1,47 +1,42 @@
 <?php
 namespace GridPlayAPI;
-use GuzzleHttp\Client;
-use Guzzle\Http\EntityBody;
-use GuzzleHttp\RequestOptions;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\stream_for;
-use GuzzleHttp\Stream\Stream;
-use Log;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Str;
+use Illuminate\Support\Facades\Log;
 class GridPlayAPI {
 	public static $nullkey = "00000000-0000-0000-0000-000000000000";
 	/*
 	* GridPlayAPI::senddata($meth, $uri, $data = [])
 	*/
-	public static function senddata($meth, $uri, $data = []) {
-		$send = ['timeout' => 3.14];
-		if ($data != []) {
-			$send['json'] = $data;
-		}
-		$client = new Client(self::httpheaders()); // Guzzle
-		$url = 'https://sl.gridplay.net/api/'.$uri;
+	public static function senddata($meth = 'get', $uri = '', $data = [], $h = []) {
+		$headers = self::httpheaders($h); // Guzzle
+		$http = Http::withHeaders($headers);
+		$url = "https://api.gridplay.net/api/".$uri;
 		try {
-			$response = $client->request($meth, $url, $send);
-			$body = $response->getBody();
-			if ($response->getStatusCode() == 200) {
-				$bodcon = $body->getContents();
-				return json_decode($bodcon, true);
+			if (strtolower($meth) == "get") {
+				$response = $http->get($url, $data);
+			}
+			if (strtolower($meth) == "put") {
+				$response = $http->put($url, $data);
+			}
+			if ($response->ok() && Str::isJson($response->body())) {
+				return json_decode($response->body(), true);
+			}else{
+				return ['error' => 'not found'];
 			}
 		}catch(\Exception $e) {
-			return ['ERROR' => 'Connection invalid'];
+			return ['error' => 'Connection invalid'];
 		}
-		return ["ERROR" => 'Unable to connect'];
+		return ["error" => 'Unable to connect'];
 	}
-	private static function httpheaders() {
-		$h = [];
-        $resident = str_replace(" ", ".", config('gridplay.api_key'));
-        $h['GPAUTH'] = base64_encode($resident.":".time());
+	private static function httpheaders($h = []) {
 		$h['content-type'] = 'application/json';
-		return ['headers' => $h];
-	}
-	public static function isJson($string) {
-    	return ((is_string($string) &&
-            (is_object(json_decode($string)) ||
-            is_array(json_decode($string))))) ? true : false;
+		$conf = config('gridplay');
+		if (array_key_exists('id', $conf) && array_key_exists('secret', $conf)) {
+			if (!empty($conf['id']) && !empty($conf['secret'])) {
+	        	$h['x-gpauth'] = base64_encode($conf['id'].":".$conf['secret']);
+			}
+		}
+		return $h;
 	}
 }

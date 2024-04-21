@@ -4,15 +4,15 @@ use GridPlayAPI;
 class GridPlay extends GridPlayAPI {
 	public static $NULL_KEY = '00000000-0000-0000-0000-000000000000';
 	public static function Name2Key($uuid = "") {
-		$api = GridPlayAPI::senddata('POST','name2key/'.$uuid,[]);
-		if (is_array($api) && array_key_exists('uuid', $api)) {
+		$api = GridPlayAPI::senddata('GET','name2key/'.$uuid,[]);
+		if (array_key_exists('uuid', $api)) {
 			return $api['uuid'];
 		}
 		return parent::$nullkey;
 	}
 	public static function Key2Name($name = "") {
-		$api = GridPlayAPI::senddata('POST','key2name/'.$name,[]);
-		if (is_array($api) && array_key_exists('name', $api)) {
+		$api = GridPlayAPI::senddata('GET','key2name/'.$name,[]);
+		if (array_key_exists('name', $api)) {
 			return $api['name'];
 		}
 		return "";
@@ -34,11 +34,11 @@ class GridPlay extends GridPlayAPI {
 		return GridPlayAPI::senddata('GET','profilepic/'.$uuid,[]);
 	}
 	public static function sendIM($towho, $msg) {
-		return GridPlayAPI::senddata('POST','instantmessage',["to" => $towho, "msg" => $msg]);
+		return GridPlayAPI::senddata('PUT','instantmessage',["to" => $towho, "msg" => $msg]);
 	}
 	public static function isOnline($uuid) {
-		$isonline = GridPlayAPI::senddata('POST','useronline/'.$uuid,[]);
-		if ($isonline['isOnline'] == "true") {
+		$isonline = GridPlayAPI::senddata('PUT','useronline/'.$uuid,[]);
+		if (array_key_exists('isOnline', $isonline) && $isonline['isOnline'] == "true") {
 			return true;
 		}
 		return false;
