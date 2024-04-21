@@ -1,4 +1,4 @@
-# GridPlay API 2.0.9
+# GridPlay API 2.0.10
 
 A API to use the GridPlay.net services for SecondLife residents.
 
@@ -61,6 +61,13 @@ Unable to connect = Unable to reach the gridplay server, please try again in afe
 Invalid key = Your api_key in gridplay.php config was invalid. Please use your SL Legacy (login) name.
 
 ### Changelog
+== 2.0.10 April 21 2024 ==
+* Last update for version 2
+* Updated this README with final info
+
+== 2.0.9 April 14 2024 == 
+* Quick fix to the isOnline method so that it returns a bool
+
 == 2.0.8 Apr 9 2024 ==
 * GridPay now discontinued due to a revamp of the system and for security reasons
 * isOnline($uuid) is now in to know if someone is online or not
