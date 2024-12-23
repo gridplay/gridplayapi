@@ -1,4 +1,4 @@
-# GridPlay API 3.0.0 alpha 1
+# GridPlay API 3.0.1
 
 A API to use the GridPlay.net services for SecondLife residents.
 
