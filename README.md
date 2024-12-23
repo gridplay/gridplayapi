@@ -27,6 +27,7 @@ GridPlay::getImg($texture_uuid); // array
 GridPlay::getProfPic($user_uuid); //[post] array
 GridPlay::sendIM($towho, $msg); //[post] array
 GridPlay::isOnline($uuid); //[post] array as ['isOnline' => true|false]
+GridPlay::getGrid($userFromHeader); // gets the grid's initals
 
 Ventalkie::sendmsg($chan, $nick, $msg); //[post] array
 Ventalkie::getChannel($search); // array
