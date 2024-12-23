@@ -10,6 +10,18 @@ class GridPlay extends GridPlayAPI {
 		}
 		return parent::$nullkey;
 	}
+	public static function getGrid($user) {
+		if (strpos($user, "Second-Life-LSL") !== false) {
+			return 'sl';
+		}
+		if (strpos($user, "CanadianGrid") !== false) {
+			return 'gc';
+		}
+		if (strpos($user, "OpenSim") !== false) {
+			return 'os';
+		}
+		return null;
+	}
 	public static function Key2Name($name = "") {
 		$api = GridPlayAPI::senddata('GET','key2name/'.$name,[]);
 		if (array_key_exists('name', $api)) {
