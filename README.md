@@ -28,7 +28,7 @@ GridPlay::getProfPic($user_uuid); //[post] array
 GridPlay::sendIM($towho, $msg); //[post] array
 GridPlay::isOnline($uuid); //[post] array as ['isOnline' => true|false]
 GridPlay::getGrid($userFromHeader); // gets the grid's initals
-GridPlay::getNews($site); // returns news from the news api
+GridPlay::getNews($site, $show, $page); // returns news from the news api
 
 Ventalkie::sendmsg($chan, $nick, $msg); //[post] array
 Ventalkie::getChannel($search); // array
