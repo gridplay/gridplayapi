@@ -50,9 +50,6 @@ Unable to connect = Unable to reach the gridplay server, please try again in afe
 Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
-== 3.0.2a - same date ==
-* Bug fix to show how many news
-
 == 3.0.2 - Dec 26 2024 ==
 * Added getting news from our API in a GET method
 
