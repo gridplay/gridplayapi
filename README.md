@@ -1,4 +1,4 @@
-# GridPlay API 3.0.1
+# GridPlay API 3.0.2
 
 A API to use the GridPlay.net services for SecondLife and opensim residents.
 
@@ -28,6 +28,7 @@ GridPlay::getProfPic($user_uuid); //[post] array
 GridPlay::sendIM($towho, $msg); //[post] array
 GridPlay::isOnline($uuid); //[post] array as ['isOnline' => true|false]
 GridPlay::getGrid($userFromHeader); // gets the grid's initals
+GridPlay::getNews($site); // returns news from the news api
 
 Ventalkie::sendmsg($chan, $nick, $msg); //[post] array
 Ventalkie::getChannel($search); // array
@@ -49,6 +50,9 @@ Unable to connect = Unable to reach the gridplay server, please try again in afe
 Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
+
+== 3.0.2 - Dec 26 2024 ==
+* Added getting news from our API in a GET method
 
 == 3.0.1 - Dec 23 2024 ==
 * Added Multigrid support, converting user from header to initals
