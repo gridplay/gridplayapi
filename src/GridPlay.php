@@ -39,8 +39,8 @@ class GridPlay extends GridPlayAPI {
 		}
 		return [];
 	}
-	public static function getNews($site) {
-		return GridPlayAPI::senddata('GET','news/'.$site,[]);
+	public static function getNews($site, $show = 6, $page = 1) {
+		return GridPlayAPI::senddata('GET','news/'.$site,['show' => $show, 'page' => $page]);
 	}
 	public static function getImg($uuid) {
 		return GridPlayAPI::senddata('GET','slimg/'.$uuid,[]);
