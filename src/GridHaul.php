@@ -7,7 +7,7 @@ class GridHaul extends GridPlayAPI {
 		if (!empty($search)) {
 			$s['search'] = $search;
 		}
-		$api = GridPlayAPI::senddata('GET','gridhaul/hubs',$s);
+		$api = GridPlayAPI::senddata('get','gridhaul/hubs',$s);
 		return $api;
 	}
 	public static function getItems($search = "") {
@@ -15,11 +15,11 @@ class GridHaul extends GridPlayAPI {
 		if (!empty($search)) {
 			$s['search'] = $search;
 		}
-		$api = GridPlayAPI::senddata('GET','gridhaul/items',$s);
+		$api = GridPlayAPI::senddata('get','gridhaul/items',$s);
 		return $api;
 	}
 	public static function getJobs() {
-		$api = GridPlayAPI::senddata('GET','gridhaul/jobs',[]);
+		$api = GridPlayAPI::senddata('get','gridhaul/jobs',[]);
 		return $api;
 	}
 }

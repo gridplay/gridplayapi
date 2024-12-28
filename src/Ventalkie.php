@@ -7,7 +7,7 @@ class Ventalkie extends GridPlayAPI {
 		if (!empty($search)) {
 			$uri .= '/'.$search;
 		}
-		$api = GridPlayAPI::senddata('GET',$uri,[]);
+		$api = GridPlayAPI::senddata('get',$uri,[]);
 		return $api;
 	}
 }
