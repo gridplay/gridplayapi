@@ -20,21 +20,21 @@ Made for Laravel 11+.
 
 ### To use is easy
 ```php
-GridPlay::Name2Key($user_uuid); // [get] string
-GridPlay::Key2Name($user_name); // [get] string
-GridPlay::Wmps(); // [get] array
-GridPlay::getImg($texture_uuid); // [get] array
-GridPlay::getProfPic($user_uuid); //[get] array
-GridPlay::sendIM($towho, $msg); //[put] array
-GridPlay::isOnline($uuid); //[get] array as ['isOnline' => true|false]
+GridPlay::Name2Key($user_uuid); // [put] string of the user's UUID key
+GridPlay::Key2Name($user_name); // [put] string of the user's name
+GridPlay::Wmps(); // [get] array shows a list of those using WMPS
+GridPlay::getImg($texture_uuid); // [get] array ['img' => (url of pic)]
+GridPlay::getProfPic($user_uuid); //[get] array ['img' => (url of pic)]
+GridPlay::sendIM($towhouuid, $msg); //[put] array as ['status' => true] if successful
+GridPlay::isOnline($uuid); //[put] array as ['isOnline' => true|false]
 GridPlay::getGrid($userFromHeader); // [get] gets the grid's initals
 GridPlay::getNews($site, $show, $page); // [get] returns news from the news api
 
-Ventalkie::getChannel($search); // [get] array
+Ventalkie::getChannel($search); // [get] array gets all the channels or of $search
 
-GridHaul::getHub($search); // [get] array
-GridHaul::getItems($search); // [get] array
-GridHaul::getJobs(); // [get] array
+GridHaul::getHub($search); // [get] array gets all hubs or of $search
+GridHaul::getItems($search); // [get] array same for here
+GridHaul::getJobs(); // [get] array shows all current jobs
 
 ```
 ALL [put] functions requires config setup in config/gridplay.php
@@ -57,6 +57,7 @@ Last update for the year
 * Ventalkie API can ONLY fetch channel data, no able to send on a channel
 * Took out referrence to Canadian Grid and Opensim due to the fact GridPlay is staying exclusivly to SL
 * Updated the README to be more clear and updated of all the functions
+* Moved key2name and name2key to be a put call to reduce spam
 
 == 3.0.2 - Dec 26 2024 ==
 * Added getting news from our API in a GET method

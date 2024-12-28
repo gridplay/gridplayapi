@@ -10,14 +10,14 @@ class GridPlay extends GridPlayAPI {
 		return null;
 	}
 	public static function Name2Key($uuid = "") {
-		$api = GridPlayAPI::senddata('get','api/name2key/'.$uuid,[]);
+		$api = GridPlayAPI::senddata('put','api/name2key/'.$uuid,[]);
 		if (array_key_exists('uuid', $api)) {
 			return $api['uuid'];
 		}
 		return parent::$nullkey;
 	}
 	public static function Key2Name($name = "") {
-		$api = GridPlayAPI::senddata('get','api/key2name/'.$name,[]);
+		$api = GridPlayAPI::senddata('put','api/key2name/'.$name,[]);
 		if (array_key_exists('name', $api)) {
 			return $api['name'];
 		}
