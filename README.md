@@ -1,4 +1,4 @@
-# GridPlay API 3.0.2
+# GridPlay API 3.1
 
 A API to use the GridPlay.net services for SecondLife and opensim residents.
 
@@ -20,29 +20,27 @@ Made for Laravel 11+.
 
 ### To use is easy
 ```php
-GridPlay::Name2Key($user_uuid); // string
-GridPlay::Key2Name($user_name); // string
-GridPlay::Wmps(); // array
-GridPlay::getImg($texture_uuid); // array
-GridPlay::getProfPic($user_uuid); //[post] array
-GridPlay::sendIM($towho, $msg); //[post] array
-GridPlay::isOnline($uuid); //[post] array as ['isOnline' => true|false]
-GridPlay::getGrid($userFromHeader); // gets the grid's initals
-GridPlay::getNews($site, $show, $page); // returns news from the news api
+GridPlay::Name2Key($user_uuid); // [get] string
+GridPlay::Key2Name($user_name); // [get] string
+GridPlay::Wmps(); // [get] array
+GridPlay::getImg($texture_uuid); // [get] array
+GridPlay::getProfPic($user_uuid); //[get] array
+GridPlay::sendIM($towho, $msg); //[put] array
+GridPlay::isOnline($uuid); //[get] array as ['isOnline' => true|false]
+GridPlay::getGrid($userFromHeader); // [get] gets the grid's initals
+GridPlay::getNews($site, $show, $page); // [get] returns news from the news api
 
-Ventalkie::sendmsg($chan, $nick, $msg); //[post] array
-Ventalkie::getChannel($search); // array
+Ventalkie::getChannel($search); // [get] array
 
-// GridHaul will soon be deprecated for a new system so ya know eh
-GridHaul::getHub($search); // array
-GridHaul::getItems($search); // array
-GridHaul::getJobs(); // array
+GridHaul::getHub($search); // [get] array
+GridHaul::getItems($search); // [get] array
+GridHaul::getJobs(); // [get] array
 
 ```
-ALL functions requires config setup in config/gridplay.php
+ALL [put] functions requires config setup in config/gridplay.php
 
 Please use Log::debug() or dd() to see what is returned before coding any further with these functions.
-All data returned is in json format and should be auto put into arrays
+All data returned is in json format and should be in a array when returned to your function call.
 
 ### For errors....
 Connection invalid = The connection to the gridplay server was invalid for some odd reason
@@ -50,6 +48,16 @@ Unable to connect = Unable to reach the gridplay server, please try again in afe
 Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
+
+== 3.1 - Dec 28 2024 ==
+Last update for the year
+* Now ALL API's will go to their own site. ie. ventalkie goes directly to the ventalkie.com website
+* Took out the api key requirement for GET calls
+* Did some code clean up to reduce memory usage
+* Ventalkie API can ONLY fetch channel data, no able to send on a channel
+* Took out referrence to Canadian Grid and Opensim due to the fact GridPlay is staying exclusivly to SL
+* Updated the README to be more clear and updated of all the functions
+
 == 3.0.2 - Dec 26 2024 ==
 * Added getting news from our API in a GET method
 

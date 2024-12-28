@@ -9,10 +9,9 @@ class GridPlayAPI {
 	* GridPlayAPI::senddata($meth, $uri, $data = [])
 	*/
 	public static function senddata($meth = 'get', $uri = '', $data = [], $h = []) {
-		$headers = self::httpheaders($h, $meth); // Guzzle
+		$headers = self::httpheaders($h, $meth);
 		$http = Http::withHeaders($headers);
 		$url = self::getURL($uri);
-		//$url = "https://api.gridplay.net/api/".$uri;
 		try {
 			if (strtolower($meth) == "get") {
 				$response = $http->withQueryParameters($data)->get($url);
