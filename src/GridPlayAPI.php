@@ -9,18 +9,19 @@ class GridPlayAPI {
 	* GridPlayAPI::senddata($meth, $uri, $data = [])
 	*/
 	public static function senddata($meth = 'get', $uri = '', $data = [], $h = []) {
-		$headers = self::httpheaders($h); // Guzzle
+		$headers = self::httpheaders($h, $meth); // Guzzle
 		$http = Http::withHeaders($headers);
-		$url = "https://api.gridplay.net/api/".$uri;
+		$url = self::getURL($uri);
+		//$url = "https://api.gridplay.net/api/".$uri;
 		try {
 			if (strtolower($meth) == "get") {
-				$response = $http->get($url, $data);
+				$response = $http->withQueryParameters($data)->get($url);
 			}
 			if (strtolower($meth) == "put") {
 				$response = $http->put($url, $data);
 			}
-			if ($response->ok() && Str::isJson($response->body())) {
-				return json_decode($response->body(), true);
+			if ($response->ok() && is_array($response->json())) {
+				return $response->json();
 			}else{
 				return ['error' => 'not found'];
 			}
@@ -29,14 +30,35 @@ class GridPlayAPI {
 		}
 		return ["error" => 'Unable to connect'];
 	}
-	private static function httpheaders($h = []) {
+	private static function httpheaders($h = [], $meth = 'get') {
 		$h['content-type'] = 'application/json';
-		$conf = config('gridplay');
-		if (array_key_exists('id', $conf) && array_key_exists('secret', $conf)) {
-			if (!empty($conf['id']) && !empty($conf['secret'])) {
-	        	$h['x-gpauth'] = base64_encode($conf['id'].":".$conf['secret']);
+		if ($meth == 'put') {
+			$conf = config('gridplay');
+			if (array_key_exists('id', $conf) && array_key_exists('secret', $conf)) {
+				if (!empty($conf['id']) && !empty($conf['secret'])) {
+		        	$h['x-gpauth'] = base64_encode($conf['id'].":".$conf['secret']);
+				}
 			}
 		}
 		return $h;
+	}
+	private static function getURL($uri) {
+		$sites = ['api' => 'https://api.gridplay.net/api'];
+		$sites['gridhaul'] = 'https://gridhaul.fun/api/gridhaul';
+		$sites['news'] = 'https://blog.gridplay.net/api';
+		$sites['wmps'] = 'https://map.gridplay.net/api';
+		if (strpos($uri, '/') !== false) {
+			$ex = explode('/', $uri);
+			$url = $sites[$ex[0]];
+			if (isset($ex[1])) {
+				$url .= '/'.$ex[1];
+			}
+			if (isset($ex[2])) {
+				$url .= '/'.$ex[2];
+			}
+		}else{
+			$url = $sites[$uri];
+		}
+		return $url;
 	}
 }

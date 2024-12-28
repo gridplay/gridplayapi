@@ -3,19 +3,19 @@ namespace GridPlayAPI;
 use GridPlayAPI;
 class GridHaul extends GridPlayAPI {
 	public static function getHub($search = "") {
-		$uri = 'gridhaul/hubs';
+		$s = [];
 		if (!empty($search)) {
-			$uri .= '?search='.$search;
+			$s['search'] = $search;
 		}
-		$api = GridPlayAPI::senddata('GET',$uri,[]);
+		$api = GridPlayAPI::senddata('GET','gridhaul/hubs',$s);
 		return $api;
 	}
 	public static function getItems($search = "") {
-		$uri = 'gridhaul/items';
+		$s = [];
 		if (!empty($search)) {
-			$uri .= '?search='.$search;
+			$s['search'] = $search;
 		}
-		$api = GridPlayAPI::senddata('GET',$uri,[]);
+		$api = GridPlayAPI::senddata('GET','gridhaul/items',$s);
 		return $api;
 	}
 	public static function getJobs() {

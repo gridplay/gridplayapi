@@ -3,27 +3,21 @@ namespace GridPlayAPI;
 use GridPlayAPI;
 class GridPlay extends GridPlayAPI {
 	public static $NULL_KEY = '00000000-0000-0000-0000-000000000000';
+	public static function getGrid($user) {
+		if (strpos($user, "Second-Life-LSL") !== false) {
+			return 'sl';
+		}
+		return null;
+	}
 	public static function Name2Key($uuid = "") {
-		$api = GridPlayAPI::senddata('GET','name2key/'.$uuid,[]);
+		$api = GridPlayAPI::senddata('GET','api/name2key/'.$uuid,[]);
 		if (array_key_exists('uuid', $api)) {
 			return $api['uuid'];
 		}
 		return parent::$nullkey;
 	}
-	public static function getGrid($user) {
-		if (strpos($user, "Second-Life-LSL") !== false) {
-			return 'sl';
-		}
-		if (strpos($user, "CanadianGrid") !== false) {
-			return 'gc';
-		}
-		if (strpos($user, "OpenSim") !== false) {
-			return 'os';
-		}
-		return null;
-	}
 	public static function Key2Name($name = "") {
-		$api = GridPlayAPI::senddata('GET','key2name/'.$name,[]);
+		$api = GridPlayAPI::senddata('GET','api/key2name/'.$name,[]);
 		if (array_key_exists('name', $api)) {
 			return $api['name'];
 		}
@@ -33,7 +27,7 @@ class GridPlay extends GridPlayAPI {
 		return GridPlayAPI::senddata('GET','wmps',[]);
 	}
 	public static function getSimCoords($sim) {
-		$api = GridPlayAPI::senddata('GET','coords?sim='.urlencode($sim),[]);
+		$api = GridPlayAPI::senddata('GET','api/coords',['sim' => urlencode($sim)]);
 		if (!is_null($api)) {
 			return $api;
 		}
@@ -43,16 +37,16 @@ class GridPlay extends GridPlayAPI {
 		return GridPlayAPI::senddata('GET','news/'.$site,['show' => $show, 'page' => $page]);
 	}
 	public static function getImg($uuid) {
-		return GridPlayAPI::senddata('GET','slimg/'.$uuid,[]);
+		return GridPlayAPI::senddata('GET','api/slimg/'.$uuid,[]);
 	}
 	public static function getProfPic($uuid) {
-		return GridPlayAPI::senddata('GET','profilepic/'.$uuid,[]);
+		return GridPlayAPI::senddata('GET','api/profilepic/'.$uuid,[]);
 	}
 	public static function sendIM($towho, $msg) {
-		return GridPlayAPI::senddata('PUT','instantmessage',["to" => $towho, "msg" => $msg]);
+		return GridPlayAPI::senddata('PUT','api/instantmessage',["to" => $towho, "msg" => $msg]);
 	}
 	public static function isOnline($uuid) {
-		$isonline = GridPlayAPI::senddata('PUT','useronline/'.$uuid,[]);
+		$isonline = GridPlayAPI::senddata('PUT','api/useronline/'.$uuid,[]);
 		if (array_key_exists('isOnline', $isonline) && $isonline['isOnline'] == "true") {
 			return true;
 		}
