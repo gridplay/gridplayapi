@@ -12,9 +12,4 @@ class Fun extends GridPlayAPI {
 		$api = GridPlayAPI::senddata('put',$uri,['uuid' => $uuid, 'xp' => $xp]);
 		return $api;
 	}
-	public static function convert($uuid = "", $xp = 1, $lvl = 1) {
-		$uri = 'fun/players/convert';
-		$api = GridPlayAPI::senddata('put',$uri,['uuid' => $uuid, 'xp' => $xp, 'lvl' => $lvl]);
-		return $api;
-	}
 }
