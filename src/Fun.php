@@ -2,9 +2,9 @@
 namespace GridPlayAPI;
 use GridPlayAPI;
 class Fun extends GridPlayAPI {
-	public static function getXP($uuid = "") {
+	public static function getXP($uuid = "", $url = '') {
 		$uri = 'fun/players/getplayer';
-		$api = GridPlayAPI::senddata('get',$uri,['uuid' => $uuid]);
+		$api = GridPlayAPI::senddata('get',$uri,['uuid' => $uuid, 'url' => $url]);
 		return $api;
 	}
 	public static function doXP($uuid = "", $xp = 1) {
