@@ -1,4 +1,4 @@
-# GridPlay API 3.1
+# GridPlay API 3.2
 
 A API to use the GridPlay.net services for SecondLife and opensim residents.
 
@@ -48,6 +48,10 @@ Unable to connect = Unable to reach the gridplay server, please try again in afe
 Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
+
+== 3.2 - Jan 11 2025 ==
+First for the year
+* Added in centralized achievements and levels with XP
 
 == 3.1 - Dec 28 2024 ==
 Last update for the year

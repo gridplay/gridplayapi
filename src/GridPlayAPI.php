@@ -47,6 +47,7 @@ class GridPlayAPI {
 		$sites['news'] = 'https://blog.gridplay.net/api';
 		$sites['wmps'] = 'https://map.gridplay.net/api';
 		$sites['ventalkie'] = 'https://ventalkie.com/api';
+		$sites['fun'] = 'https://gridfun.quest/api';
 		if (strpos($uri, '/') !== false) {
 			$ex = explode('/', $uri);
 			$url = $sites[$ex[0]];

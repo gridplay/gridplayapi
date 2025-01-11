@@ -31,7 +31,7 @@
                 "GridPlay": "GridPlayAPI\\GridPlay",
                 "Ventalkie": "GridPlayAPI\\Ventalkie",
                 "GridHaul": "GridPlayAPI\\GridHaul",
-                "GridPhone": "GridPlayAPI\\GridPhone"
+                "Fun": "GridPlayAPI\\Fun"
             }
 
         }
