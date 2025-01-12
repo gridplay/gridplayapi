@@ -49,9 +49,10 @@ Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
 
-== 3.2 - Jan 11 2025 ==
+== 3.2 - Jan ?? 2025 ==
 First for the year
 * Added in centralized achievements and levels with XP
+* Added titles and achievements
 
 == 3.1 - Dec 28 2024 ==
 Last update for the year
