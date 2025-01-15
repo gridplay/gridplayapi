@@ -12,11 +12,11 @@ class Fun extends GridPlayAPI {
 		$api = GridPlayAPI::senddata('put',$uri,['uuid' => $uuid, 'xp' => $xp]);
 		return $api;
 	}
-	public static function doAchievement($uuid = "", $aid = "", $points = 1) {
+	/*public static function doAchievement($uuid = "", $aid = "", $points = 1) {
 		$uri = 'fun/achievements/doachievement';
 		$api = GridPlayAPI::senddata('put',$uri,['uuid' => $uuid, 'aid' => $aid, 'points' => $points]);
 		return $api;
-	}
+	}*/
 	public static function gettitles($uuid = "", $name = '') {
 		$uri = 'fun/titles/gettitles';
 		$api = GridPlayAPI::senddata('get',$uri,['uuid' => $uuid, 'name' => $name]);
