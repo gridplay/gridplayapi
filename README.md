@@ -1,4 +1,4 @@
-# GridPlay API 3.2
+# GridPlay API 3.1.1
 
 A API to use the GridPlay.net services for SecondLife and opensim residents.
 
@@ -49,8 +49,8 @@ Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
 
-== 3.2 - Jan ?? 2025 ==
-First for the year
+== 3.1.1 - April 23 2025 ==
+* Support for Laravel 12
 * Added in centralized achievements and levels with XP
 * Added titles and achievements
 
