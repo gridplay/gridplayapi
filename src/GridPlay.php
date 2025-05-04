@@ -1,6 +1,7 @@
 <?php
 namespace GridPlayAPI;
 use GridPlayAPI;
+use Log;
 class GridPlay extends GridPlayAPI {
 	public static $NULL_KEY = '00000000-0000-0000-0000-000000000000';
 	public static function getGrid($user) {
@@ -18,6 +19,7 @@ class GridPlay extends GridPlayAPI {
 	}
 	public static function Key2Name($name = "") {
 		$api = GridPlayAPI::senddata('get','api/key2name/'.$name,[]);
+		Log::debug($api);
 		if (array_key_exists('name', $api)) {
 			return $api['name'];
 		}
