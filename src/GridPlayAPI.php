@@ -14,12 +14,12 @@ class GridPlayAPI {
 		$url = self::getURL($uri);
 		try {
 			if (strtolower($meth) == "get") {
-				$response = $http->withQueryParameters($data)->get($url);
+				$response = $http->get($url, $data);
 			}
 			if (strtolower($meth) == "put") {
 				$response = $http->put($url, $data);
 			}
-			if ($response->ok() && is_array($response->json())) {
+			if ($response->ok()) {
 				return $response->json();
 			}else{
 				return ['error' => 'not found'];
