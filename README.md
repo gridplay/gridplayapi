@@ -14,14 +14,14 @@ php artisan vendor:publish --provider="GridPlayAPI\GPAPIServiceProvider"
 ```
 This will create a config file located in ```config/gridplay.php```
 
-This config file MUST contain your GPaONE ID and secret API key in order for the request to go through.
+This config file MUST contain your GPAPI_ID and GPAPI_SECRET API key in order for the request to go through.
 
 Made for Laravel 11+.
 
 ### To use is easy
 ```php
-GridPlay::Name2Key($user_uuid); // [put] string of the user's UUID key
-GridPlay::Key2Name($user_name); // [put] string of the user's name
+GridPlay::Name2Key($user_name); // [put] string of the user's UUID key
+GridPlay::Key2Name($user_uuid); // [put] string of the user's name
 GridPlay::Wmps(); // [get] array shows a list of those using WMPS
 GridPlay::getImg($texture_uuid); // [get] array ['img' => (url of pic)]
 GridPlay::getProfPic($user_uuid); //[get] array ['img' => (url of pic)]
