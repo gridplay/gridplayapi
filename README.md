@@ -49,6 +49,9 @@ Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
 
+== 3.1.2 - June 12 2025 ==
+* Only added parseName($name) to help parse .resident out of someone's name
+
 == 3.1.1 - April 23 2025 ==
 * Support for Laravel 12
 * Added in centralized achievements and levels with XP
