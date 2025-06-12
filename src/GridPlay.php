@@ -58,4 +58,14 @@ class GridPlay extends GridPlayAPI {
 		}
 		return false;
 	}
+	public static function parseName($name) {
+		$name = strtolower($name);
+		if (strpos($name, ".") != -1) {
+			$name = str_replace(".", " ", $name);
+		}
+		if (strpos($name, " resident") != -1) {
+			$name = str_replace(" resident", "", $name);
+		}
+		return $name;
+	}
 }
