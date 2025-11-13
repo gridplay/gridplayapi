@@ -49,6 +49,11 @@ Invalid key = Your ID and SECRET in gridplay.php config was invalid.
 
 ### Changelog
 
+== 3.1.3 and 3.1.4 - Nov 13 2025 ==
+* Fixed the default value in Name2Key to be NULL_KEY
+* Took out the Log::debug out of Name2Key since its not needed
+* Updated this README
+
 == 3.1.2 - June 12 2025 ==
 * Only added parseName($name) to help parse .resident out of someone's name
 

@@ -12,7 +12,6 @@ class GridPlay extends GridPlayAPI {
 	}
 	public static function Name2Key($name = "") {
 		$api = GridPlayAPI::senddata('get','api/name2key/'.$name,[]);
-		Log::debug($api);
 		if (array_key_exists('uuid', $api)) {
 			return $api['uuid'];
 		}
