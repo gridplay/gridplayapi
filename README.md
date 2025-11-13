@@ -1,4 +1,4 @@
-# GridPlay API 3.1.2
+# GridPlay API 3.1.4
 
 A API to use the GridPlay.net services for SecondLife and opensim residents.
 
