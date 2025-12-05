@@ -34,6 +34,9 @@ class GridPlayAPI {
 		$conf = config('gridplay');
 		if (array_key_exists('id', $conf) && array_key_exists('secret', $conf)) {
 			if (!empty($conf['id']) && !empty($conf['secret'])) {
+				if (empty($conf['slid'])) {
+					$conf['slid'] = self::$nullkey;
+				}
 				$hash = hash_hmac('sha256', $conf['slid'], $conf['secret'], true);
 				$h['x-gpauth'] = base64_encode($conf['id'].":".base64_encode($hash));
 			}
