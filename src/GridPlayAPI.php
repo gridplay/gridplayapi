@@ -31,12 +31,11 @@ class GridPlayAPI {
 	}
 	private static function httpheaders($h = [], $meth = 'get') {
 		$h['content-type'] = 'application/json';
-		if ($meth == 'put') {
-			$conf = config('gridplay');
-			if (array_key_exists('id', $conf) && array_key_exists('secret', $conf)) {
-				if (!empty($conf['id']) && !empty($conf['secret'])) {
-		        	$h['x-gpauth'] = base64_encode($conf['id'].":".$conf['secret']);
-				}
+		$conf = config('gridplay');
+		if (array_key_exists('id', $conf) && array_key_exists('secret', $conf)) {
+			if (!empty($conf['id']) && !empty($conf['secret'])) {
+				$hash = hash_hmac('sha256', $conf['id'], $conf['secret'], true);
+				$h['x-gpauth'] = base64_encode($conf['id'].":".$hash);
 			}
 		}
 		return $h;
