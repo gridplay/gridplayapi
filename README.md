@@ -1,4 +1,4 @@
-# GridPlay API 3.1.4
+# GridPlay API 3.2
 
 A API to use the GridPlay.net services for SecondLife and opensim residents.
 
@@ -45,9 +45,14 @@ All data returned is in json format and should be in a array when returned to yo
 ### For errors....
 Connection invalid = The connection to the gridplay server was invalid for some odd reason
 Unable to connect = Unable to reach the gridplay server, please try again in afew minutes
-Invalid key = Your ID and SECRET in gridplay.php config was invalid.
+Invalid key = Your ID and/or SECRET and/or SLID in gridplay.php config was invalid.
 
 ### Changelog
+
+== 3.2 - Dec 5 2025 ==
+* Reworked the API verication system. Now uses hash_hmac to encrypt keys
+* The rework now requires your SL's UUID of your avatar
+* API keys are now created at https://api.gridplay.net/generate
 
 == 3.1.3 and 3.1.4 - Nov 13 2025 ==
 * Fixed the default value in Name2Key to be NULL_KEY
