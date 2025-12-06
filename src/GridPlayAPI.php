@@ -38,7 +38,7 @@ class GridPlayAPI {
 					$conf['slid'] = self::$nullkey;
 				}
 				$hash = hash_hmac('sha256', $conf['slid'], $conf['secret']);
-				$h['x-gpauth'] = base64_encode($conf['id'].":".base64_encode($hash));
+				$h['x-gpauth'] = base64_encode($conf['id'].":".$hash);
 			}
 		}
 		return $h;
