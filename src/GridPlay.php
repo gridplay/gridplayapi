@@ -18,7 +18,7 @@ class GridPlay extends GridPlayAPI {
 		return "";
 	}
 	public static function Wmps() {
-		return parent::senddata('get','wmps', '/',[]);
+		return parent::senddata('get','wmps', '',[]);
 	}
 	public static function getSimCoords($sim) {
 		$api = parent::senddata('get','', 'coords',['sim' => urlencode($sim)]);
