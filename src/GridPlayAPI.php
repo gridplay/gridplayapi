@@ -8,7 +8,7 @@ class GridPlayAPI {
 	/*
 	* GridPlayAPI::senddata($meth, $uri, $data = [])
 	*/
-	public static function senddata($meth = 'get', $uri = '/', $params = '', $data = [], $h = []) {
+	public static function senddata($meth = 'get', $uri = '', $params = '', $data = [], $h = []) {
 		$headers = self::httpheaders($h, $meth);
 		$http = Http::withHeaders($headers);
 		$url = "https://api.gridplay.net/api/$uri/$params";
