@@ -11,7 +11,7 @@ class GridPlayAPI {
 	public static function senddata($meth = 'get', $uri = '/', $params = '', $data = [], $h = []) {
 		$headers = self::httpheaders($h, $meth);
 		$http = Http::withHeaders($headers);
-		$url = "https://api.gridplay.net/api/$uri$params";
+		$url = "https://api.gridplay.net/api/$uri/$params";
 		try {
 			if (strtolower($meth) == "get") {
 				$response = $http->get($url, $data);
