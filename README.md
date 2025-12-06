@@ -52,11 +52,12 @@ Invalid key = Your ID and/or SECRET and/or SLID in gridplay.php config was inval
 
 ### Changelog
 
-== 4.0 - Dec 6 2025 ==
+== 4.0 and 4.0.1 - Dec 6 2025 ==
 * Directing ALL API's to the main to then be sent to the right site
 * Refactored some functions
 * name2key and key2name requires a special API key
 * Hmac hashing has been tweeked for better security and handling
+* 4.0.1 introduces being able to send messages on VenTalkie
 
 == 3.2 - Dec 5 2025 ==
 * Reworked the API verication system. Now uses hash_hmac to encrypt keys
