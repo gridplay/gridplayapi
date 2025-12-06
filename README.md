@@ -1,4 +1,4 @@
-# GridPlay API 3.2
+# GridPlay API 4.x
 
 A API to use the GridPlay.net services for SecondLife and opensim residents.
 
@@ -14,9 +14,12 @@ php artisan vendor:publish --provider="GridPlayAPI\GPAPIServiceProvider"
 ```
 This will create a config file located in ```config/gridplay.php```
 
-This config file MUST contain your GPAPI_ID and GPAPI_SECRET API key in order for the request to go through.
+This config file MUST contain your GPAPI_ID, GPAPI_SECRET & GPAPI_SLID api key in order for the request to go through.
 
-Made for Laravel 11+.
+You can get these from https://api.gridplay.net/generate a SecondLife account is REQUIRED!
+Save these creds as they will only be shown ONCE!
+
+Made for Laravel 12+.
 
 ### To use is easy
 ```php
@@ -49,10 +52,11 @@ Invalid key = Your ID and/or SECRET and/or SLID in gridplay.php config was inval
 
 ### Changelog
 
-== 4.0 - SOON ==
+== 4.0 - Dec 6 2025 ==
 * Directing ALL API's to the main to then be sent to the right site
 * Refactored some functions
 * name2key and key2name requires a special API key
+* Hmac hashing has been tweeked for better security and handling
 
 == 3.2 - Dec 5 2025 ==
 * Reworked the API verication system. Now uses hash_hmac to encrypt keys
