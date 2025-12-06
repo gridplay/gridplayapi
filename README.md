@@ -49,6 +49,11 @@ Invalid key = Your ID and/or SECRET and/or SLID in gridplay.php config was inval
 
 ### Changelog
 
+== 4.0 - SOON ==
+* Directing ALL API's to the main to then be sent to the right site
+* Refactored some functions
+* name2key and key2name requires a special API key
+
 == 3.2 - Dec 5 2025 ==
 * Reworked the API verication system. Now uses hash_hmac to encrypt keys
 * The rework now requires your SL's UUID of your avatar
