@@ -8,10 +8,10 @@ class GridPlayAPI {
 	/*
 	* GridPlayAPI::senddata($meth, $uri, $data = [])
 	*/
-	public static function senddata($meth = 'get', $uri = '', $data = [], $h = []) {
+	public static function senddata($meth = 'get', $api = 'api', $uri = '', $data = [], $h = []) {
 		$headers = self::httpheaders($h, $meth);
 		$http = Http::withHeaders($headers);
-		$url = self::getURL($uri);
+		$url = "https://api.gridplay.net/api/$api/$uri";
 		try {
 			if (strtolower($meth) == "get") {
 				$response = $http->get($url, $data);
@@ -42,26 +42,5 @@ class GridPlayAPI {
 			}
 		}
 		return $h;
-	}
-	private static function getURL($uri) {
-		$sites = ['api' => 'https://api.gridplay.net/api'];
-		$sites['gridhaul'] = 'https://gridhaul.fun/api/gridhaul';
-		$sites['news'] = 'https://blog.gridplay.net/api';
-		$sites['wmps'] = 'https://map.gridplay.net/api';
-		$sites['ventalkie'] = 'https://ventalkie.com/api';
-		$sites['fun'] = 'https://gridfun.quest/api';
-		if (strpos($uri, '/') !== false) {
-			$ex = explode('/', $uri);
-			$url = $sites[$ex[0]];
-			if (isset($ex[1])) {
-				$url .= '/'.$ex[1];
-			}
-			if (isset($ex[2])) {
-				$url .= '/'.$ex[2];
-			}
-		}else{
-			$url = $sites[$uri];
-		}
-		return $url;
 	}
 }
