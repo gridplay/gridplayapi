@@ -25,11 +25,7 @@ class GridPlayAPI {
 			if (strtolower($meth) == "put") {
 				$response = $http->put($url, $data);
 			}
-			if ($response->ok()) {
-				return json_decode($response->body(), true);
-			}else{
-				return ['error' => 'not found'];
-			}
+			return json_decode($response->body(), true);
 		}catch(\Exception $e) {
 			return ['error' => 'Connection invalid'];
 		}
