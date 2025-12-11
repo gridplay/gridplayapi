@@ -52,6 +52,9 @@ Invalid key = Your ID and/or SECRET and/or SLID in gridplay.php config was inval
 
 ### Changelog
 
+== 4.0.4 - SOON ==
+* Key2Name now returns UNKNOWN when unable to find resident
+
 == 4.0.3 - Dec 11 2025 ==
 * Fix on how data is received (gah i hope this works)
 

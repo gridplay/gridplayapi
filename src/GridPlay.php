@@ -15,7 +15,7 @@ class GridPlay extends GridPlayAPI {
 		if (array_key_exists('name', $api)) {
 			return $api['name'];
 		}
-		return "";
+		return "Unknown";
 	}
 	public static function WmpsDynamic() {
 		return parent::senddata('get','wmps', 'getdynamic',[]);
