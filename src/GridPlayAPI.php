@@ -18,6 +18,7 @@ class GridPlayAPI {
 		if (!empty($params)) {
 			$url .= '/'.$params;
 		}
+		Log::debug($url);
 		try {
 			if (strtolower($meth) == "get") {
 				$response = $http->get($url, $data);
@@ -25,7 +26,7 @@ class GridPlayAPI {
 			if (strtolower($meth) == "put") {
 				$response = $http->put($url, $data);
 			}
-			return json_decode($response->body(), true);
+			return $response->body();
 		}catch(\Exception $e) {
 			return ['error' => 'Connection invalid'];
 		}
