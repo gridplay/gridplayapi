@@ -25,6 +25,7 @@ class GridPlayAPI {
 			if (strtolower($meth) == "put") {
 				$response = $http->put($url, $data);
 			}
+			Log::debug($response->body());
 			if ($response->ok()) {
 				return $response->json();
 			}else{
