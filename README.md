@@ -52,6 +52,9 @@ Invalid key = Your ID and/or SECRET and/or SLID in gridplay.php config was inval
 
 ### Changelog
 
+== 4.0.3 - Dec 11 2025 ==
+* Fix on how data is received (gah i hope this works)
+
 == 4.0 and 4.0.1 - Dec 6 2025 ==
 * Directing ALL API's to the main to then be sent to the right site
 * Refactored some functions
